@@ -68,7 +68,9 @@ Get user with merchant type id: http://localhost:8081/api/users/search/findByMer
               MYSQL DATABASE SCRIPTS
 *********************************************************************************************************
 
+
 -- Create User
+
 
 CREATE USER 'bestcommerceapp'@'localhost' IDENTIFIED BY 'bestcommerceapp';
 
@@ -77,7 +79,9 @@ GRANT ALL PRIVILEGES ON * . * TO 'bestcommerceapp'@'localhost';
 ALTER USER 'bestcommerceapp'@'localhost' IDENTIFIED WITH mysql_native_password BY 'bestcommerceapp';
 
 
+
 -- Create Schema
+
 DROP SCHEMA IF EXISTS `bestcommerce`;
 
 CREATE SCHEMA `bestcommerce`;
@@ -85,13 +89,16 @@ CREATE SCHEMA `bestcommerce`;
 USE `bestcommerce` ;
 
 
+
 -- Create Tables
+
 CREATE TABLE IF NOT EXISTS `bestcommerce`.`category` (
   `id` BIGINT NOT NULL AUTO_INCREMENT,
   `category_name` VARCHAR(255) NULL DEFAULT NULL,
   PRIMARY KEY (`id`))
 ENGINE=InnoDB
 AUTO_INCREMENT = 1;
+
 
 
 CREATE TABLE IF NOT EXISTS `bestcommerce`.`product` (
@@ -109,6 +116,7 @@ ENGINE=InnoDB
 AUTO_INCREMENT = 1;
 
 
+
 CREATE TABLE IF NOT EXISTS `bestcommerce`.`payment` (
   `id` BIGINT NOT NULL AUTO_INCREMENT,
   `payment_name` VARCHAR(255) NULL DEFAULT NULL,
@@ -117,12 +125,14 @@ ENGINE=InnoDB
 AUTO_INCREMENT = 1;
 
 
+
 CREATE TABLE IF NOT EXISTS `bestcommerce`.`delivery` (
   `id` BIGINT NOT NULL AUTO_INCREMENT,
   `delivery_name` VARCHAR(255) NULL DEFAULT NULL,
   PRIMARY KEY (`id`))
 ENGINE=InnoDB
 AUTO_INCREMENT = 1;
+
 
 
 CREATE TABLE IF NOT EXISTS `bestcommerce`.`product_payment` (
@@ -137,6 +147,7 @@ ENGINE=InnoDB
 AUTO_INCREMENT = 1;
 
 
+
 CREATE TABLE IF NOT EXISTS `bestcommerce`.`product_delivery` (
     PD_ID BIGINT NOT NULL AUTO_INCREMENT,
     PROD_ID BIGINT,
@@ -149,7 +160,9 @@ ENGINE=InnoDB
 AUTO_INCREMENT = 1;
 
 
+
 -- Add sample data
+
 INSERT INTO CATEGORY(CATEGORY_NAME) VALUES ('Electronics');
 
 INSERT INTO CATEGORY(CATEGORY_NAME) VALUES ('Fashion');
@@ -220,13 +233,16 @@ INSERT INTO PRODUCT_DELIVERY(PROD_ID, DEL_ID) VALUES (5, 2);
 INSERT INTO PRODUCT_DELIVERY(PROD_ID, DEL_ID) VALUES (6, 3);
 
 
+
 -- Create Tables
+
 CREATE TABLE IF NOT EXISTS `bestcommerce`.`merchant_type` (
   `id` BIGINT NOT NULL AUTO_INCREMENT,
   `merchant_type_name` VARCHAR(255) NULL DEFAULT NULL,
   PRIMARY KEY (`id`))
 ENGINE=InnoDB
 AUTO_INCREMENT = 1;
+
 
 
 CREATE TABLE IF NOT EXISTS `bestcommerce`.`users` (
@@ -245,7 +261,9 @@ ENGINE=InnoDB
 AUTO_INCREMENT = 1;
 
 
+
 -- Add sample data
+
 INSERT INTO MERCHANT_TYPE(MERCHANT_TYPE_NAME) VALUES ('Wholesale');
 
 INSERT INTO MERCHANT_TYPE(MERCHANT_TYPE_NAME) VALUES ('Retail merchant');
@@ -254,10 +272,14 @@ INSERT INTO MERCHANT_TYPE(MERCHANT_TYPE_NAME) VALUES ('Retail merchant');
 
 INSERT INTO USERS(MERCHANT_TYPE_ID, MERCHANT_NAME, OWNER_NAME, ADDRESS, PHONE_NUMBER, EMAIL, PASSWORD) VALUES (2, 'Merchant Name-1', 'Owner Name-1', 'Address-1', 'Phone Number-1', 'email-1', 'password-1');
 
+
 INSERT INTO USERS(MERCHANT_TYPE_ID, MERCHANT_NAME, OWNER_NAME, ADDRESS, PHONE_NUMBER, EMAIL, PASSWORD) VALUES (1, 'Merchant Name-2', 'Owner Name-2', 'Address-2', 'Phone Number-2', 'email-2', 'password-2');
+
 
 INSERT INTO USERS(MERCHANT_TYPE_ID, MERCHANT_NAME, OWNER_NAME, ADDRESS, PHONE_NUMBER, EMAIL, PASSWORD) VALUES (2, 'Merchant Name-3', 'Owner Name-3', 'Address-3', 'Phone Number-3', 'email-3', 'password-3');
 
+
 INSERT INTO USERS(MERCHANT_TYPE_ID, MERCHANT_NAME, OWNER_NAME, ADDRESS, PHONE_NUMBER, EMAIL, PASSWORD) VALUES (2, 'Merchant Name-4', 'Owner Name-4', 'Address-4', 'Phone Number-4', 'email-4', 'password-4');
+
 
 INSERT INTO USERS(MERCHANT_TYPE_ID, MERCHANT_NAME, OWNER_NAME, ADDRESS, PHONE_NUMBER, EMAIL, PASSWORD) VALUES (1, 'Merchant Name-5', 'Owner Name-5', 'Address-5', 'Phone Number-5', 'email-5', 'password-5');
